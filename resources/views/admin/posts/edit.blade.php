@@ -41,18 +41,18 @@
 			</div>
 			<div class="uk-margin">
 				<div class="uk-form-controls">
-					<label class="uk-form-label">Статус</label>
-					<label><input class="uk-radio" type="radio" name="published" value="1" @if($post->published === true)checked @endif> Опубликована</label><br>
-					<label><input class="uk-radio" type="radio" name="published" value="0" @if($post->published === false)checked @endif> Заблокирована</label>				
-				</div>
-			</div>
-			<div class="uk-margin">
-				<div class="uk-form-controls">
 					<label for="tags" class="uk-form-label">Теги</label>
 					<input type="text" name="tags" class="uk-input" id="tags" placeholder="озеро, байкал, сибирь" value="{{ old('tags') ?? $post->tagListNormalized}}">
 					@error('tags')
 					<span class="uk-text-small uk-text-danger">{{ $message }}</span>
 					@enderror
+				</div>
+			</div>
+			<div class="uk-margin">
+				<div class="uk-form-controls">
+					<label class="uk-form-label">Статус</label>
+					<label class="uk-margin-right"><input class="uk-radio" type="radio" name="published" value="1" @if($post->published === true)checked @endif> Опубликована</label>
+					<label><input class="uk-radio" type="radio" name="published" value="0" @if($post->published === false)checked @endif> Заблокирована</label>				
 				</div>
 			</div>
 		</div>

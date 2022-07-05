@@ -46,6 +46,9 @@ class CategoryController extends Controller
         $category->alias = $request->alias;
         $category->introtext = $request->introtext;
         $category->update();
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+            $category->addMediaFromRequest('image')->toMediaCollection('categories', 'categories');
+        }        
         return redirect(route('admin.categories.index'))->with('category-updated', '');
     }
 
