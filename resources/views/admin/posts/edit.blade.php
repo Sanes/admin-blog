@@ -49,7 +49,7 @@
 			<div class="uk-margin">
 				<div class="uk-form-controls">
 					<label for="tags" class="uk-form-label">Теги</label>
-					<input type="text" name="tags" class="uk-input" id="tags" placeholder="озеро, байкал, сибирь" value="{{ old('tags') ?? $post->tagList}}">
+					<input type="text" name="tags" class="uk-input" id="tags" placeholder="озеро, байкал, сибирь" value="{{ old('tags') ?? $post->tagListNormalized}}">
 					@error('tags')
 					<span class="uk-text-small uk-text-danger">{{ $message }}</span>
 					@enderror
@@ -92,9 +92,17 @@
 				</div>
 			</div>	
 			<div class="uk-margin">
-				<a href="{{ route('admin.posts.index') }}" class="uk-button uk-button-primary">Назад</a>
-				<button class="uk-button uk-button-default">Сохранить</button>
-				<a onclick="destroyPost('{{ $post->id }}', '{{ $post->pagetitle }}');" class="uk-button uk-button-danger">Удалить</a>
+				<div uk-grid>
+					<div class="uk-width-expand@m">
+						<a href="{{ route('admin.posts.index') }}" class="uk-button uk-button-primary">Назад</a>
+						<button class="uk-button uk-button-default">Сохранить</button>
+						<a class="uk-button uk-button-default">Галерея</a>						
+					</div>
+					<div class="uk-width-auto">
+						<a onclick="destroyPost('{{ $post->id }}', '{{ $post->pagetitle }}');" class="uk-button uk-button-danger">Удалить</a>
+					</div>
+				</div>
+
 			</div>		
 		</div>
 	</div>
@@ -106,6 +114,10 @@
 </form>
 @endsection
 @section('js')
+<link rel="stylesheet" href="/css/codemirror.min.css" />
+<script src="/js/codemirror.min.js"></script>
+<script src="/js/xml.min.js"></script>
+<script src="/js/emmet.min.js"></script>
 <script>
 	let cm = CodeMirror.fromTextArea(content, {
 		mode : 'text/html',

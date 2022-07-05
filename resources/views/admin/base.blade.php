@@ -6,12 +6,8 @@
 	<title>@yield('title') | {{ config('app.name')}}</title>
     <link rel="icon" href="/laravel.png">
 	<link rel="stylesheet" href="/css/uikit.min.css">
-	<link rel="stylesheet" href="/css/codemirror.min.css" />
 	<script src="/js/uikit.min.js"></script>
 	<script src="/js/uikit-icons.min.js"></script>
-	<script src="/js/codemirror.min.js"></script>
-	<script src="/js/xml.min.js"></script>
-	<script src="/js/emmet.min.js"></script>
 {{-- 	<script src="/js/turbolinks.js"></script>
     <meta name="turbolinks-cache-control" content="no-cache"> --}}
     <style>

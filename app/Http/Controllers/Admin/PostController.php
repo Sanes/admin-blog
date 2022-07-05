@@ -75,8 +75,7 @@ class PostController extends Controller
         $post->published_at = $request->published_at;
         $post->update();
         if ($request->tags) {
-            $post->retag($request->tags);
-        }
+            $post->retag($request->tags);        }
         else
         {
             $post->detag();
