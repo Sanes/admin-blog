@@ -35,10 +35,15 @@
 				<label for="introtext" class="uk-form-label">Описание</label>
 				<textarea name="introtext" id="introtext" rows="3" class="uk-textarea" placeholder="Делюсь впечатлениями о красивых местах">{{ old('introtext') ?? $category->introtext }}</textarea>
 			</div>
+			<div class="uk-margin" uk-margin>
+				<div uk-form-custom="target: true" class="uk-width-expand">
+					<input type="file" name="image">
+					<input class="uk-input" type="text" placeholder="Выберите изображение" disabled>
+				</div>
+			</div>
 			<div class="uk-margin">
 				<div class="uk-form-controls">
-					<label for="image" class="uk-form-label">Изображение</label>
-					<input type="file" name="image" id="image" class="">
+					<label for="clear"><input type="checkbox" class="uk-checkbox uk-margin-small-right" value="1" name="clear" id="clear">Удалить изображение</label>
 				</div>
 			</div>
 			<div class="uk-margin">
@@ -48,7 +53,7 @@
 			</div>
 		</div>
 		<div class="uk-width-1-2@m">
-			<img src="{{ $category->getFirstMediaUrl('categories') }}" alt="">
+			<img src="{{ $category->getFirstOrDefaultMediaUrl('categories') }}" alt="">
 		</div>
 	</div>
 </form>

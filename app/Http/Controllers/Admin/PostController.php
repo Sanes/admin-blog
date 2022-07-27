@@ -46,23 +46,17 @@ class PostController extends Controller
     }    
 
 
-    public function show($id)
+    public function edit($post)
     {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        $post = Post::findOrFail($id);
+        $post = Post::findOrFail($post);
         $categories = Category::orderBy('pagetitle')->get();
         return view('admin.posts.edit', compact('post', 'categories'));
     }
 
 
-    public function update(PostUpdateRequest $request, $id)
+    public function update(PostUpdateRequest $request, $post)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::findOrFail($post);
         $post->pagetitle = $request->pagetitle;
         $post->longtitle = $request->longtitle;
         $post->alias = $request->alias;
@@ -84,9 +78,9 @@ class PostController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy($post)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::findOrFail($post);
         $post->delete();
         return redirect(route('admin.posts.index'))->with('post-destroyed', '');
     }

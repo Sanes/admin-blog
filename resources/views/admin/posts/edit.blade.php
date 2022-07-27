@@ -86,6 +86,9 @@
 			</div>
 		</div>
 		<div class="uk-width-1-1">
+			<div class="uk-margin">				
+				<a class="uk-button uk-button-default" onclick='javascript:window.open("{{ route('admin.galleries.show', $post->id) }}")' >Галерея</a>						
+			</div>
 			<div class="uk-margin">
 				<div class="uk-form-controls">
 					<textarea name="content" id="content" rows="10" class="uk-textarea">{{ old('content') ?? $post->content }}</textarea>
@@ -96,7 +99,6 @@
 					<div class="uk-width-expand@m">
 						<a href="{{ route('admin.posts.index') }}" class="uk-button uk-button-primary">Назад</a>
 						<button class="uk-button uk-button-default">Сохранить</button>
-						<a class="uk-button uk-button-default">Галерея</a>						
 					</div>
 					<div class="uk-width-auto">
 						<a onclick="destroyPost('{{ $post->id }}', '{{ $post->pagetitle }}');" class="uk-button uk-button-danger">Удалить</a>

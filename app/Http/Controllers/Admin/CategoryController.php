@@ -48,7 +48,10 @@ class CategoryController extends Controller
         $category->update();
         if($request->hasFile('image') && $request->file('image')->isValid()) {
             $category->addMediaFromRequest('image')->toMediaCollection('categories', 'categories');
-        }        
+        }    
+        if ($request->clear) {
+            $category->clearMediaCollection('categories');            
+        }    
         return redirect(route('admin.categories.index'))->with('category-updated', '');
     }
 
